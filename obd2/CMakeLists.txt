@@ -12,7 +12,7 @@ target_include_directories(Obd2 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 enable_testing()
 
-add_executable(obd2_unit_tests test/obd2/connection_handler.test.cpp)
+add_executable(obd2_unit_tests test/obd2/connection_handler.test.cpp test/obd2/serial_interface.test.cpp)
 
 target_link_libraries(obd2_unit_tests PRIVATE GTest::gtest_main Obd2)
 
