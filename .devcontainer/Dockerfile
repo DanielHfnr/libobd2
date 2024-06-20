@@ -24,6 +24,14 @@ RUN cd /usr/src/googletest && \
     cmake . && \
     cmake --build . --target install
 
+# Install libserial for the serial interface api in C++
+RUN apt-get install -y libserial-dev
+
+# Install obd emulator and obd lib for testing purposes
+RUN apt-get install -y python3-pip
+RUN pip install ELM327-emulator
+RUN pip install obd
+
 # [Optional] Uncomment this section to install additional vcpkg ports.
 # RUN su vscode -c "${VCPKG_ROOT}/vcpkg install <your-port-name-here>"
 
