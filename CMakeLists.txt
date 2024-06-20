@@ -10,12 +10,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(obd2)
 
-find_package(GTest REQUIRED)
-
-enable_testing()
-include(GoogleTest)
-
-
 add_executable(Obd2SampleApp main.cpp)
 
 target_link_libraries(Obd2SampleApp PRIVATE Obd2)
