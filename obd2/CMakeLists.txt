@@ -1,7 +1,7 @@
 
 find_package(GTest REQUIRED)
 
-add_library(Obd2 STATIC src/obd2/connection_handler.cpp)
+add_library(Obd2 STATIC src/obd2/connection_handler.cpp src/obd2/serial_interface.cpp)
 
 target_include_directories(Obd2 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
