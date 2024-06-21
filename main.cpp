@@ -12,8 +12,9 @@
 
 int main()
 {
+    LibSerial::SerialPort serial_port{};
 
-    obd2::connection::SerialInterface<LibSerial::SerialPort> serial_interface{};
+    obd2::connection::SerialInterface<LibSerial::SerialPort> serial_interface{serial_port};
 
     if (serial_interface.openDevice("/dev/pts/1"))
     {

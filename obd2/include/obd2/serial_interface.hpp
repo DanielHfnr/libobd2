@@ -19,7 +19,10 @@ class SerialInterface final
 {
 
 public:
-    SerialInterface() = default;
+    SerialInterface(SerialPortType_T& serial_port)
+        : m_serial_port(serial_port)
+    {
+    }
 
     SerialInterface(const SerialInterface&) = delete;
 
@@ -28,8 +31,6 @@ public:
     SerialInterface(SerialInterface&&) = delete;
 
     SerialInterface operator=(SerialInterface&&) = delete;
-
-    ~SerialInterface();
 
     /// \brief
     /// \param[in] device
@@ -47,9 +48,7 @@ public:
 
 private:
     /// \brief
-    std::string m_current_device{};
-    /// \brief
-    SerialPortType_T m_serial_port{};
+    SerialPortType_T& m_serial_port;
 };
 
 } // namespace obd2::connection

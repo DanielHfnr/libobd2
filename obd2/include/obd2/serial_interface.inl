@@ -12,15 +12,6 @@ namespace obd2::connection
 {
 
 template <typename SerialPortType_T>
-SerialInterface<SerialPortType_T>::~SerialInterface()
-{
-    if (isOpen())
-    {
-        closeDevice();
-    }
-}
-
-template <typename SerialPortType_T>
 bool SerialInterface<SerialPortType_T>::openDevice(const std::string& device)
 {
     if (isOpen())
@@ -40,8 +31,6 @@ bool SerialInterface<SerialPortType_T>::openDevice(const std::string& device)
 
         return false;
     }
-
-    m_current_device = device;
 
     return true;
 }

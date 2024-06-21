@@ -14,7 +14,7 @@ enable_testing()
 
 add_executable(obd2_unit_tests test/obd2/connection_handler.test.cpp test/obd2/serial_interface.test.cpp)
 
-target_link_libraries(obd2_unit_tests PRIVATE GTest::gtest_main Obd2)
+target_link_libraries(obd2_unit_tests PRIVATE GTest::gtest_main GTest::gmock_main Obd2)
 
 include(GoogleTest)
 gtest_discover_tests(obd2_unit_tests)
