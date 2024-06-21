@@ -14,9 +14,10 @@ project(
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-option( GCOVR "Use gcovr" OFF )
+option(GCOVR "Use gcovr" OFF)
 
 if (GCOVR)
+    message("GCOVR enabled to check code coverage")
     set(CMAKE_CXX_FLAGS " ${CMAKE_CXX_FLAGS} --coverage")
 endif(GCOVR)
 
