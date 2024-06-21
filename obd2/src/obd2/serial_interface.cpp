@@ -11,17 +11,26 @@
 namespace obd2::connection
 {
 
-SerialInterface::SerialInterface(const std::string& device)
-    : m_current_device(device)
+SerialInterface::~SerialInterface()
 {
+    if (isOpen())
+    {
+        closeDevice();
+    }
 }
 
-bool SerialInterface::openDevice()
+bool SerialInterface::openDevice(const std::string& device)
 {
+    if (isOpen())
+    {
+        std::cout << "There is an open device. Please close the device first." << std::endl;
+        return false;
+    }
+
     try
     {
-        std::cout << "Opening current device: " << m_current_device << std::endl;
-        m_serial_port.Open(m_current_device);
+        std::cout << "Opening device: " << device << std::endl;
+        m_serial_port.Open(device);
     }
     catch (const LibSerial::OpenFailed&)
     {
@@ -30,7 +39,19 @@ bool SerialInterface::openDevice()
         return false;
     }
 
+    m_current_device = device;
+
     return true;
+}
+
+void SerialInterface::closeDevice()
+{
+    m_serial_port.Close();
+}
+
+bool SerialInterface::isOpen() const
+{
+    return m_serial_port.IsOpen();
 }
 
 } // namespace obd2::connection

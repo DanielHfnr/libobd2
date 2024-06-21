@@ -13,7 +13,7 @@ namespace obd2::connection
 {
 
 /// \brief
-class ConnectionHandler
+class ConnectionHandler final
 {
 
 public:
