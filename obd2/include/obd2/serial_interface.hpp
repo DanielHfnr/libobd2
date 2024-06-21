@@ -9,6 +9,8 @@
 
 #include <libserial/SerialPort.h>
 
+#include <string>
+
 namespace obd2::connection
 {
 
@@ -18,7 +20,13 @@ class SerialInterface
 
 public:
     /// \brief
-    SerialInterface();
+    SerialInterface(const std::string& device);
+
+    bool openDevice();
+
+private:
+    std::string m_current_device{};
+    LibSerial::SerialPort m_serial_port{};
 };
 
 } // namespace obd2::connection

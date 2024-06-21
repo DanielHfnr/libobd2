@@ -4,15 +4,16 @@
 // \copyright (C) 2024 Daniel Hafner
 // ============================================================================
 
-#include "obd2/connection_handler.hpp"
+#include "obd2/serial_interface.hpp"
+
 #include <iostream>
 
 int main()
 {
 
-    obd2::connection::ConnectionHandler connection_handler{};
+    obd2::connection::SerialInterface serial_interface{"/dev/pts/1"};
 
-    if (connection_handler.connect())
+    if (serial_interface.openDevice())
     {
         std::cout << "Connection successful" << std::endl;
     }

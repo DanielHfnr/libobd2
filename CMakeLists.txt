@@ -14,6 +14,12 @@ project(
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+option( GCOVR "Use gcovr" OFF )
+
+if (GCOVR)
+    set(CMAKE_CXX_FLAGS " ${CMAKE_CXX_FLAGS} --coverage")
+endif(GCOVR)
+
 add_subdirectory(obd2)
 
 add_executable(Obd2SampleApp main.cpp)

@@ -32,6 +32,9 @@ RUN apt-get install -y python3-pip
 RUN pip install ELM327-emulator
 RUN pip install obd
 
+# Install gcovr to install coverage reports
+RUN pip install gcovr
+
 # [Optional] Uncomment this section to install additional vcpkg ports.
 # RUN su vscode -c "${VCPKG_ROOT}/vcpkg install <your-port-name-here>"
 
