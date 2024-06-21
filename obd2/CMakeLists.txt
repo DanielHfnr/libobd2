@@ -6,13 +6,9 @@
 
 find_package(GTest REQUIRED)
 
-find_package(PkgConfig)
-pkg_check_modules(SERIAL libserial)
-
 add_library(Obd2 STATIC src/obd2/connection_handler.cpp src/obd2/serial_interface.cpp)
 
-target_include_directories(Obd2 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include ${SERIAL_INCLUDE_DIRS})
-target_link_libraries(Obd2 PUBLIC ${SERIAL_LDFLAGS})
+target_include_directories(Obd2 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 enable_testing()
 

@@ -8,4 +8,9 @@
 
 #include <gtest/gtest.h>
 
+namespace obd2::connection
+{
+
 TEST(SerialInterface, OpenConnection) {}
+
+} // namespace obd2::connection

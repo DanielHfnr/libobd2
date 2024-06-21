@@ -6,12 +6,14 @@
 
 #include "obd2/serial_interface.hpp"
 
+#include <libserial/SerialPort.h>
+
 #include <iostream>
 
 int main()
 {
 
-    obd2::connection::SerialInterface serial_interface{};
+    obd2::connection::SerialInterface<LibSerial::SerialPort> serial_interface{};
 
     if (serial_interface.openDevice("/dev/pts/1"))
     {

@@ -7,14 +7,14 @@
 #ifndef OBD2_SERIAL_INTERFACE_HPP
 #define OBD2_SERIAL_INTERFACE_HPP
 
-#include <libserial/SerialPort.h>
-
 #include <string>
 
 namespace obd2::connection
 {
 
 /// \brief
+/// \tparam SerialPortType_T
+template <typename SerialPortType_T>
 class SerialInterface final
 {
 
@@ -49,9 +49,11 @@ private:
     /// \brief
     std::string m_current_device{};
     /// \brief
-    LibSerial::SerialPort m_serial_port{};
+    SerialPortType_T m_serial_port{};
 };
 
 } // namespace obd2::connection
+
+#include "obd2/serial_interface.inl"
 
 #endif // OBD2_SERIAL_INTERFACE_HPP

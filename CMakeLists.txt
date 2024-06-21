@@ -21,9 +21,11 @@ if (GCOVR)
     set(CMAKE_CXX_FLAGS " ${CMAKE_CXX_FLAGS} --coverage")
 endif(GCOVR)
 
+find_package(PkgConfig)
+pkg_check_modules(SERIAL libserial)
+
 add_subdirectory(obd2)
 
 add_executable(Obd2SampleApp main.cpp)
-
-target_link_libraries(Obd2SampleApp PRIVATE Obd2)
-
+target_link_libraries(Obd2SampleApp PRIVATE Obd2  ${SERIAL_LDFLAGS})
+target_include_directories(Obd2SampleApp PUBLIC ${SERIAL_INCLUDE_DIRS})
